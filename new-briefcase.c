@@ -2,10 +2,10 @@
  * File:   varun_4_1.c
  * Author: VARUN SAHNI
  *
- * Created on changed 26 April, 2018, 8:40 PM
+ * Created on changed 19 september, 2018, 8:40 PM
  * this is final proper working in briefcase
- * last update on  28-july
- * ISSU: RESET OF BOARD
+ * 
+ * 
  */
 
 #include <stdio.h>
@@ -69,8 +69,8 @@
 #define SW4 RF5
 #define SW5 RF6   
 #define SW6 RD7
-#define SW7 RD5//swap with 8 manual is not working
-#define SW8 RD4//swap with 9
+#define SW7 RD6
+#define SW8 RD5
 
 
 #define INPUT_SWITCH_DIR_1 TRISFbits.TRISF2
@@ -79,8 +79,8 @@
 #define INPUT_SWITCH_DIR_4 TRISFbits.TRISF5
 #define INPUT_SWITCH_DIR_5 TRISFbits.TRISF6
 #define INPUT_SWITCH_DIR_6 TRISDbits.TRISD7
-#define INPUT_SWITCH_DIR_7 TRISDbits.TRISD5//SW8
-#define INPUT_SWITCH_DIR_8 TRISDbits.TRISD4//SW9
+#define INPUT_SWITCH_DIR_7 TRISDbits.TRISD6
+#define INPUT_SWITCH_DIR_8 TRISDbits.TRISD5
 
 unsigned char st[50] = "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
@@ -1013,126 +1013,126 @@ int main() {
             
         }
        
-	   
-			if(copy_parentalLockBuffer[5]==CHAR_OFF && SW5==ON && M5==ON)
-			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='1';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='5';__delay_ms(1);
+	   //manual response only from 5 switch to 8 switch
+		if(copy_parentalLockBuffer[5]==CHAR_OFF && SW5==ON && M5==ON)
+		{    
+				if(man==1)
+				{
+				__delay_ms(5);
+				TX1REG='R';__delay_ms(1);
+				TX1REG='1';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='5';__delay_ms(1);
 				OUTPUT_RELAY5=ON;
-                }
-                M5=0;                
-                man=0;
-			}     
+				}
+				M5=0;                
+				man=0;
+		}     
        
-         if(copy_parentalLockBuffer[5]==CHAR_OFF && SW5==OFF && M5==OFF)
+        	 if(copy_parentalLockBuffer[5]==CHAR_OFF && SW5==OFF && M5==OFF)
 			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='5';__delay_ms(1);
+				if(man==1)
+				{
+				__delay_ms(5);
+				TX1REG='R';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='5';__delay_ms(1);
 				OUTPUT_RELAY5=OFF;                 
 				}
-                M5=1;               
-                man=0;
+				M5=1;               
+				man=0;
 			}
 	   
 			if(copy_parentalLockBuffer[6]==CHAR_OFF && SW6==ON && M6==ON)
 			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='1';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='6';__delay_ms(1);
+				if(man==1)
+				{
+				__delay_ms(5);
+				TX1REG='R';__delay_ms(1);
+				TX1REG='1';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='6';__delay_ms(1);
 				OUTPUT_RELAY6=ON;
-                }
-                M6=0;                
-                man=0;
+				}
+				M6=0;                
+				man=0;
 			}     
        
-        if(copy_parentalLockBuffer[6]==CHAR_OFF && SW6==OFF && M6==OFF)
+     		   if(copy_parentalLockBuffer[6]==CHAR_OFF && SW6==OFF && M6==OFF)
 			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='6';__delay_ms(1);
-      			OUTPUT_RELAY6=OFF;                 
+				if(man==1)
+				{
+				__delay_ms(5);
+				TX1REG='R';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='6';__delay_ms(1);
+				OUTPUT_RELAY6=OFF;                 
 				}
-                M6=1;               
-                man=0;
+				M6=1;               
+				man=0;
 			}
     
-         if(copy_parentalLockBuffer[1]==CHAR_OFF && SW1==ON && M1==ON)
+		 if(copy_parentalLockBuffer[1]==CHAR_OFF && SW1==ON && M1==ON)
 			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='1';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='7';__delay_ms(1);
+				if(man==1)
+				{
+				__delay_ms(5);
+				TX1REG='R';__delay_ms(1);
+				TX1REG='1';__delay_ms(1);
+				TX1REG='0';__delay_ms(1);
+				TX1REG='7';__delay_ms(1);
 				OUTPUT_RELAY7=ON;
-                }
-                M1=0;                
-                man=0;
+				}
+				M1=0;                
+				man=0;
 			}     
        
-        if(copy_parentalLockBuffer[1]==CHAR_OFF && SW1==OFF && M1==OFF)
-			{  
-            if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='7';__delay_ms(1);
-     			OUTPUT_RELAY7=OFF;                 
-				} 
-                M1=1;               
-                man=0;
-			}
-            if(copy_parentalLockBuffer[2]==CHAR_OFF && SW2==OFF && M2==OFF)
-			{  
-            if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='8';__delay_ms(1);
-                 start_PWM_Generation_in_ISR_FLAG = 0;                 
-    			 OUTPUT_DIMMER = ON;
+		if(copy_parentalLockBuffer[1]==CHAR_OFF && SW1==OFF && M1==OFF)
+				{  
+				    if(man==1)
+					{
+					__delay_ms(5);
+					TX1REG='R';__delay_ms(1);
+					TX1REG='0';__delay_ms(1);
+					TX1REG='0';__delay_ms(1);
+					TX1REG='7';__delay_ms(1);
+					OUTPUT_RELAY7=OFF;                 
+					} 
+					M1=1;               
+					man=0;
 				}
-                M2=1;               
-                man=0;
-			}
-         if(copy_parentalLockBuffer[2]==CHAR_OFF && SW2==ON && M2==ON)
-			{    
-                if(man==1)
-                {
-                __delay_ms(5);
-                TX1REG='R';__delay_ms(1);
-                TX1REG='1';__delay_ms(1);
-                TX1REG='0';__delay_ms(1);
-                TX1REG='8';__delay_ms(1);
-                start_PWM_Generation_in_ISR_FLAG = 0; 
-				 OUTPUT_DIMMER = OFF;
-                }
-                M2=0;                
-                man=0;
-			}     
+		    if(copy_parentalLockBuffer[2]==CHAR_OFF && SW2==OFF && M2==OFF)
+				{  
+				    if(man==1)
+					{
+					__delay_ms(5);
+					TX1REG='R';__delay_ms(1);
+					TX1REG='0';__delay_ms(1);
+					TX1REG='0';__delay_ms(1);
+					TX1REG='8';__delay_ms(1);
+					 start_PWM_Generation_in_ISR_FLAG = 0;                 
+					 OUTPUT_DIMMER = ON;
+					}
+					M2=1;               
+					man=0;
+				}
+		 if(copy_parentalLockBuffer[2]==CHAR_OFF && SW2==ON && M2==ON)
+				{    
+					if(man==1)
+					{
+					__delay_ms(5);
+					TX1REG='R';__delay_ms(1);
+					TX1REG='1';__delay_ms(1);
+					TX1REG='0';__delay_ms(1);
+					TX1REG='8';__delay_ms(1);
+					start_PWM_Generation_in_ISR_FLAG = 0; 
+					OUTPUT_DIMMER = OFF;
+					}
+					M2=0;                
+					man=0;
+				}     
        
 
 }
